@@ -1,0 +1,120 @@
+   [screener semántico] intentando cargar 'paraphrase-multilingual-MiniLM-L12-v2' (sentence-transformers)...
+   [screener semántico] sentence-transformers NO disponible (ProxyError: 403 Forbidden). Cayendo a LSA (TruncatedSVD sobre TF-IDF) —
+   cero dependencias nuevas, sin descargas, sin necesitar internet.
+   [screener semántico] LSA listo — 150 componentes, 50.1% de varianza explicada.
+
+Método usado por este tamiz semántico: lsa_tfidf  (TruncatedSVD(n_components=150) sobre TF-IDF char_wb(3,5))
+catálogo: 18,881 códigos
+muestra : 300 líneas · 263 códigos distintos · 55 rubros N1
+
+==============================================================================
+RESULTADO DEL TAMIZ SEMÁNTICO SOBRE n=300 (misma muestra de RUN_ID_G7=fb7c3b125bf7)
+método: lsa_tfidf
+==============================================================================
+
+### A · ¿el código declarado existe en el catálogo de 18.881?
+   sí: 299/300  (99.67%)
+   no: 1/300  (0.33%)
+
+### B · nivel en que el TOP-1 del tamiz SEMÁNTICO coincide con el declarado
+   hoja        5    1.67%
+   N3          5    1.67%
+   N2          8    2.67%
+   N1         14    4.67%
+   ninguno   268   89.33%
+
+   acumulado (el tamiz acierta AL MENOS hasta...):
+   hoja        5    1.67%
+   N3         10    3.33%
+   N2         18    6.00%
+   N1         32   10.67%
+
+### C · rank del código declarado entre los 18.881 (n=299 con código en catálogo)
+   top-1             5    1.67%
+   top-3             7    2.34%
+   top-10           13    4.35%
+   top-100          42   14.05%
+   top-1000        117   39.13%
+   peor que 1000   182   60.87%
+   mediana del rank: 1,749 de 18,881
+   similitud media del declarado: 0.255
+
+### D · por tramo de monto
+             n  acierta_hoja_%  acierta_N1+_%
+tramo                                        
+1_bajo   174.0            1.72           9.77
+2_medio   95.0            2.11           9.47
+3_alto    31.0            0.00          19.35
+
+### E · por mecanismo
+             n  acierta_hoja_%  acierta_N1+_%
+tipo_oc                                      
+AG        80.0            3.75          11.25
+CC         4.0            0.00          25.00
+CM        55.0            1.82          20.00
+MC        16.0            0.00           0.00
+SE       121.0            0.83           8.26
+TD        24.0            0.00           4.17
+
+### F · 12 casos donde el tamiz SEMÁNTICO discrepa MÁS (declarado fuera del top-1000)
+
+   texto     : 1321616 brocha lizcal media 1 2 x 3 unidad 1347719 1321616 brocha lizcal media 1 2 x 3 unidad c
+   declarado : 31211904 · brochas  (rank 18,594/18,881, sim -0.018)
+   top1 tamiz: 43222503 · Equipo de seguridad de evaluación de vulnerabilidad  (sim 0.463)
+
+   texto     : correlativo plan 5904 unidad requirente sd genomica y genetica molecular c c 03 11 00 00 cod fl
+   declarado : 12352204 · enzimas  (rank 18,539/18,881, sim 0.025)
+   top1 tamiz: 40101706 · Persianas de aire acondicionado  (sim 0.607)
+
+   texto     : barra fibra carbono d 11 l150 n material 394 820 barra fibra carbono d 11 l150 n material 394 8
+   declarado : 56101501 · soportes  (rank 18,042/18,881, sim -0.014)
+   top1 tamiz: 30101603 · Barras de hierro  (sim 0.628)
+
+   texto     : levantamiento critico diagnostico y modelo de gestion monumento historico ex estacion de colcha
+   declarado : 81101508 · ingenieria arquitectonica  (rank 17,979/18,881, sim 0.048)
+   top1 tamiz: 85141603 · Baños termales  (sim 0.52)
+
+   texto     : corchete 3 puestos detalles senalados en proceso de cotizacion id 859378 11 sc22 corchete 3 pue
+   declarado : 56101532 · mobiliario  (rank 17,941/18,881, sim 0.021)
+   top1 tamiz: 12352130 · Intermedios de acrilato o de metacrilato  (sim 0.655)
+
+   texto     : fotografico 100 hojas tamano a4
+   declarado : 60141006 · juguetes didacticos  (rank 17,487/18,881, sim -0.008)
+   top1 tamiz: 82131602 · Cinematografía  (sim 0.94)
+
+   texto     : muslera grande tres anclajes color negro similar cytac
+   declarado : 46151504 · equipo de proteccion corporal  (rank 17,308/18,881, sim 0.018)
+   top1 tamiz: 23101515 · Grabadoras  (sim 0.557)
+
+   texto     : electrodo leep electrodo leep
+   declarado : 30222404 · unidad de cuidados intensivos  (rank 16,870/18,881, sim -0.012)
+   top1 tamiz: 52141537 · Olla eléctrica doméstica  (sim 0.763)
+
+   texto     : compra de 2 mediaguas 6x3 con piso y panel divisorio central para formar dos ambientes despacho
+   declarado : 30201601 · casas  (rank 16,092/18,881, sim 0.056)
+   top1 tamiz: 77101801 · Sistemas de información medioambiental  (sim 0.579)
+
+   texto     : merken ahumado merken ahumado
+   declarado : 10151504 · semillas o almacigos de ajies  (rank 15,901/18,881, sim -0.002)
+   top1 tamiz: 91101604 · Piercing  (sim 0.462)
+
+   texto     : polar con logo bordado talla s color azul segun cotizacion n 2020 12 polar con logo bordado tal
+   declarado : 53102901 · prendas de deporte y buzos de mujer  (rank 15,585/18,881, sim 0.04)
+   top1 tamiz: 46182401 · Ducha de esterilización  (sim 0.579)
+
+   texto     : granadina mitjans granadina mitjans
+   declarado : 50202303 · jugos y nectar concentrados  (rank 15,569/18,881, sim -0.002)
+   top1 tamiz: 42201823 · Tubo y unidad transformadora de radiografía médica  (sim 0.379)
+
+==============================================================================
+### G · VEREDICTO — comparación DECLARADA contra el tamiz léxico (criterio ±10 pp)
+==============================================================================
+   Tamiz LÉXICO   (screener_onu.py, TF-IDF char n-gramas) : 21.00%  (cap11b_tamiz_salida.txt, [MEDIDO])
+   Tamiz SEMÁNTICO (lsa_tfidf)                          : 10.67%
+   delta                                                  : -10.33 pp
+   → DIVERGENTE (más de ±10 pp): los métodos capturan señales
+     distintas. Citar las dos cifras por separado en el informe, nunca mezcladas ni
+     promediadas — misma disciplina que ya descartó CAP-12B por no replicar su propio
+     criterio de validación.
+
+Tamiz semántico termina.

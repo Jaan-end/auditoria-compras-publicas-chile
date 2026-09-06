@@ -1,0 +1,60 @@
+resultados/ — qué se puede citar y qué no
+=========================================
+
+CITABLE  (RUN_ID_CAP = 1314c4f6d481 · RUN_ID_G7 = fb7c3b125bf7)
+  cap10_g7_salida_cruda.txt          cascada G7 · 81,87% evaluable
+  cap11b_tamiz_resultado.csv         tamiz sobre la muestra de 300
+  cap11b_tamiz_salida.txt
+  cap11c_muestra_reponderada.csv     las 300 con su peso HT — usar ESTE para elegir los 30 casos
+  cap12_desacuerdos_top200.csv       CAP-12 valido · 30,57% / 62,28% / 81,04% condicional
+  corrida_del_23_salida_cruda.txt    CAP-10/11/12 del 23-ago
+
+CITABLE  (RUN_ID_G7b = 966ab5c4d538 · corrida del 24-ago)
+  corrida_del_24_salida_cruda.txt    Q1 (circularidad por mecanismo + shift-share),
+                                     Q4 (codigos malformados), y la cascada G7 repetida
+                                     -> prueba de reproducibilidad
+                                     OJO: el bloque CAP-12B de ese mismo archivo NO se cita.
+
+NO CITAR
+  cap12b_desacuerdos_top200_DESCARTADO.csv
+      Salida de CAP-12B, que NO replico su criterio predeclarado
+      (15,24% donde tenia que dar 30,57%). Descartado por protocolo — F17 seccion 6.
+      Se conserva solo como evidencia de que la capa de similitud si reprodujo
+      a la UDF: sus 200 filas son identicas a cap12_desacuerdos_top200.csv.
+
+CITABLE  (28-ago-2026 · sesion 25 · RUN_ID_P0 = 770618aa84a4)
+  corrida_del_28_paso0BDE_salida_cruda.txt
+      Paso 0-B (viejo vs nuevo mes a mes, PC), paso 0-D (columnas de fecha, PC)
+      y paso 0-E (inventario fisico del Volumen, dbutils.fs.ls).
+      Es la fuente de todas las cifras de F25 y F26: los 11.402 codigos
+      ausentes, el -9,80% de la ventana 2024-11..2025-10, los 63,4 bytes por
+      fila de lic_historico/2025 y las dos columnas de adjudicacion.
+      El paso 0-B y el 0-D no gastaron cupo (corren en el PC); el 0-E tampoco
+      (dbutils.fs.ls es metadato, no una accion de Spark).
+
+PENDIENTE DE CORRER (sesion 31, 31-ago-2026) — celdas nuevas, todavia sin salida real
+  cap11d_enriquecido_30_casos.csv
+      Lo escribe la celda nueva "CAP-11-D" agregada al final de
+      notebooks/etapa2_ANEXO_PROFESOR_v19.py. Trae codigo_licitacion, codigo_oc,
+      si el ONU declarado estaba o no en la licitacion de origen, y el CLP real
+      de la linea (no el del estrato) — todo lo que cap11c_muestra_reponderada.csv
+      no trae y bloqueaba construir la tabla de los 30 casos. Bajarlo aqui
+      DESPUES de correrlo en Databricks, con ese nombre exacto.
+  tabla_30_casos.csv
+      La escribe local/enriquecer_muestra_30_casos.py, cruzando
+      cap11c_muestra_reponderada.csv contra cap11d_enriquecido_30_casos.csv
+      (verifica que los 300 `_id` de los dos archivos son identicos antes de
+      escribir nada). Trae los 4 grupos del protocolo F10, con la URL de la
+      ficha marcada [POR VERIFICAR] hasta confirmar el esquema real de URL de
+      mercadopublico.cl. Ver docs/F30-CIERRE-SESION-31-31-AGO.md.
+
+CORRECCIONES DE ESTA SESION, no tocan archivos de este directorio pero SI
+tocan cifras citadas en el informe — ver docs/F30-CIERRE-SESION-31-31-AGO.md:
+  - El literal "G6 ajustado acumulado 2017-2026 = 99,19%" (Apendice A / 6C.3 de
+    etapa2_RESPALDO_COMPLETO_v18.py) NO esta calculado por ninguna celda. Se
+    agrego una celda nueva y real, "CAP-3-BIS", al final de
+    etapa2_ANEXO_PROFESOR_v19.py. Correrla y citar SU numero, con su run_id —
+    no el 99,19% suelto.
+  - La afirmacion "FechaAdjudicacion se rellena con el centinela 1900-01-01"
+    (F27 S4.2) es falsa para el corte principal (F28 S3.2: 0 centinelas en 36
+    archivos). Retirada del informe — ver F30.

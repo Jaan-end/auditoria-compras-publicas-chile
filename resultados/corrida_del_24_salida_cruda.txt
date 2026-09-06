@@ -1,0 +1,217 @@
+============================================================================== CAP-0-G7 · utilidades cargadas · RUN_ID_G7 = 966ab5c4d538 ============================================================================== umbrales: MIN_CHARS_G7=12 · N_MUESTRA=300 · SEED_MUESTRA=20260823 · LIMITE_PARES_CAP12=2,000,000 salida : /Volumes/workspace/default/mercado_publico/capstone_salidas/966ab5c4d538 listo. Siguiente: CAP-10.
+
+
+==============================================================================
+CAP-10 · G7 — texto evaluable para auditar el código ONU · RUN_ID_G7=966ab5c4d538
+==============================================================================
+
+### 10.A · columnas resueltas
+   comprador   : _sinclasificar_EspecificacionComprador
+   proveedor   : _sinclasificar_EspecificacionProveedor
+   genérico    : _sinclasificar_NombreroductoGenerico
+   ONU         : onu_oc
+   año         : _year
+   tipo        : tipo_oc
+   precio      : precio_neto_oc
+   cantidad    : cantidad_oc
+
+### 10.C · Las 40 cadenas más repetidas — así se ve el relleno
+    Si algo marcado PASA es relleno, agrégalo a MULETILLAS_G7 y vuelve a 10.D.
+    No adivines la lista: esta tabla ES la lista.
+
+         326,338  1849200 pasaje aereo                                                         >>> PASA
+         211,535  1849900 tasa de embarque                                                     >>> PASA
+         190,435  2237550 pasaje aereo nacional                                                >>> PASA
+          47,900  1017920 estaciones de servicio eds petroleo diesel litro 1037947             >>> PASA
+          39,251  1224202 promocionales 1250207                                                >>> PASA
+          35,207  1165049 pasaje aereo internacional valor del pasaje 1191154                  >>> PASA
+          34,266  1006573 papel multiproposito equalit carta 75 gr 98 blancura resma de 500 ho >>> PASA
+          30,147  1223800 formulario 1249806                                                   >>> PASA
+          29,137  1006577 papel multiproposito equalit oficio blanco 75 gr albura 98 resma de  >>> PASA
+          27,494  1017911 estaciones de servicio eds gasolina litro 1037938                    >>> PASA
+          22,114  1007978 lapiz bic boligrafo punta media azul unidad 1025978                  >>> PASA
+          20,024  1007861 archivador auca oficio ancho palanca burdeo unidad 1025861           >>> PASA
+          19,758  1165028 pasaje aereo nacional valor del pasaje 1191136                       >>> PASA
+          16,029  cilantro                                                                     ya filtrada
+          15,753  zapallo italiano                                                             >>> PASA
+          15,695  zanahoria                                                                    ya filtrada
+          15,547  1007682 corchetes torre 11695 26 6 5000 unidades 1025682                     >>> PASA
+          15,529  1035111 courier nacional encomienda 50 k maximo 48 horas 1055197             >>> PASA
+          15,160  papas                                                                        ya filtrada
+          15,149  1164685 toner hp 85a negro unidad 1190772                                    >>> PASA
+          14,885  1006576 papel multiproposito equalit oficio 75 gr albura 96 97 caja de 10 re >>> PASA
+          14,174  1223777 cuadernillo 1249782                                                  >>> PASA
+          14,009  1006571 papel multiproposito equalit carta 75 gr albura 96 97 alcalino caja  >>> PASA
+          13,431  118346 toalla de papel elite jumbo 250 m 2 rollos 122666                     >>> PASA
+          13,408  platanos                                                                     ya filtrada
+          13,133  993004 actividades en terreno y lanzamiento 1010004                          >>> PASA
+          12,997  1332473 corrector paper mate liquid paper correction pen unidad 1358612      >>> PASA
+          12,874  993003 fiestas y eventos 1010003                                             >>> PASA
+          12,799  1035109 courier nacional valija 48 horas 1055195                             >>> PASA
+          12,411  1007894 goma de borrar factis miga s 20 unidad 1025894                       >>> PASA
+          12,340  965965 verdura fresca tomate larga vida primera 1 k 982965                   >>> PASA
+          12,327  azucar                                                                       ya filtrada
+          12,094  1114617 almuerzo en establecimiento menu ejecutivo valor por persona 1134617 >>> PASA
+          11,925  tomate                                                                       ya filtrada
+          11,869  platano                                                                      ya filtrada
+          11,830  954032 vale de alimentacion 1 000 971032                                     >>> PASA
+          11,712  1223744 afiche o poster 1249749                                              >>> PASA
+          11,543  1007980 lapiz bic boligrafo punta media rojo unidad 1025980                  >>> PASA
+          11,446  1035107 courier nacional sobre 48 horas 1 5 kg maximo 1055193                >>> PASA
+          11,429  tomates                                                                      ya filtrada
+
+    las 40 juntas suman 1,395,104 líneas; el filtro actual atrapa 107,842 (7.7%)
+
+### 10.D · CASCADA G7 — universo completo de líneas de OC
+    líneas totales                                     51,451,528
+    · con especificación del COMPRADOR                 50,310,235  97.78%
+    · con especificación del PROVEEDOR                 40,833,170  79.36%
+    1. no nula                                         51,247,066  99.60%
+    2. + no relleno (>= 12 caracteres)                 49,917,404  97.02%
+    3. + no circular   = EVALUABLE                     42,122,558  81.87%
+
+    NO EVALUABLE — el complemento, que ES el hallazgo: 9,328,970  18.13%
+
+    Ponderado por CLP (precio x cantidad, SIN sanear): evaluable = 91.22%
+    [!] ese denominador incluye el outlier de 36,8 billones. Para citar en
+        pesos, repetir sobre el universo saneado de CAP-7/CAP-9.
+
+### 10.E · Por año
+       año         líneas    no nula   no relleno    EVALUABLE
+      2017      6,609,983     99.51%       96.90%       84.03%
+      2018      6,614,357     99.58%       97.09%       89.17%
+      2019      6,209,651     99.59%       97.14%       89.71%
+      2020      4,408,740     99.49%       96.81%       85.52%
+      2021      4,266,941     99.50%       96.63%       80.66%
+      2022      4,728,085     99.53%       96.61%       76.62%
+      2023      5,167,807     99.50%       96.81%       76.79%
+      2024      5,344,111     99.71%       97.08%       76.57%
+      2025      5,150,919     99.85%       97.50%       77.39%
+      2026      2,950,934     99.88%       97.79%       75.19%
+
+### 10.F · Por mecanismo (tipo_oc) — top 12 por volumen
+            tipo         líneas    EVALUABLE
+              SE     22,874,778       87.89%
+              CM     17,193,682       69.49%
+              AG     10,407,191       88.94%
+              MC        486,654       73.95%
+              TD        396,724       93.35%
+              CC         91,743       91.10%
+              CT            754       87.67%
+              CA              1        0.00%
+              CB              1      100.00%
+
+### 10.G · Pares distintos (texto normalizado, código ONU)
+    El costo escala con los pares DISTINTOS, no con las líneas.
+    pares distintos (aprox., error 2%): 19,651,704
+    factor de deduplicación: 2.1x
+    corpus deduplicado con Haiku 4.5 batch: US$ 8,254
+
+### VEREDICTO G7 — leerlo contra las magnitudes de arriba, no solo
+    PASA (81.87% evaluable). CAP-11 y CAP-12 tienen base suficiente.
+
+CAP-10 termina. RUN_ID_G7=966ab5c4d538
+
+
+### Q1.A · Circularidad DENTRO de cada mecanismo, y peso del mecanismo
+    %circ = pp que ese mecanismo pierde por circularidad ese año
+    %vol  = qué fracción de TODAS las líneas del año es ese mecanismo
+
+   año         CM %circ       CM %vol        SE %circ       SE %vol        AG %circ       AG %vol
+  2017           16.88%         55.0%           7.97%         44.9%           0.00%          0.0%
+  2018            7.73%         56.4%           7.91%         41.4%           0.00%          0.0%
+  2019            6.65%         54.8%           7.68%         40.5%           0.00%          0.0%
+  2020           15.71%         43.1%           7.19%         45.4%           7.91%         10.4%
+  2021           40.17%         24.3%           6.55%         48.1%          10.55%         27.3%
+  2022           88.96%         15.0%           6.19%         50.4%          10.07%         34.3%
+  2023           99.80%         13.9%           5.75%         50.6%           9.17%         35.2%
+  2024           99.92%         14.8%           5.32%         49.0%           8.75%         35.8%
+  2025           99.91%         14.5%           5.18%         36.6%           8.15%         43.5%
+  2026           99.86%         17.6%           4.50%         37.2%           7.91%         40.1%
+
+### Q1.B · Descomposición shift-share del alza de la circularidad
+    (composición = cambió la mezcla · conducta = cambió el comportamiento)
+
+    2017 -> 2026:  circularidad 12.87 pp -> 22.42 pp  (alza +9.55 pp)
+        composición (mezcla)                 -6.94 pp    -72.7% del alza
+        conducta (dentro del mecanismo)     +44.12 pp    462.1% del alza
+        interacción                         -27.63 pp   -289.4% del alza
+
+    2019 -> 2026:  circularidad 6.76 pp -> 22.42 pp  (alza +15.66 pp)
+        composición (mezcla)                 -2.74 pp    -17.5% del alza
+        conducta (dentro del mecanismo)     +49.79 pp    318.0% del alza
+        interacción                         -31.40 pp   -200.5% del alza
+
+### Q1.C · Circularidad acumulada 2017-2026, por mecanismo
+      tipo         líneas     %circ   EVALUABLE
+        SE     22,874,778     6.60%      87.89%
+        CM     17,193,682    30.51%      69.49%
+        AG     10,407,191     8.97%      88.94%
+        MC        486,654    17.98%      73.95%
+        TD        396,724     3.55%      93.35%
+        CC         91,743     5.84%      91.10%
+        CT            754     4.77%      87.67%
+        CA              1   100.00%       0.00%
+        CB              1     0.00%     100.00%
+
+    LECTURA: si %circ de CM se mantiene plano y lo que sube es su %vol,
+    el hallazgo es COMPOSICIÓN. Si %circ sube dentro de cada mecanismo,
+    es CONDUCTA. Q1.B lo cuantifica; no lo decidas a ojo desde Q1.A.
+
+### Q4 · evaluables 42,122,558 · malformadas 425,230 (1.01%) forma líneas % de las malformadas 2_numerico_menos_de_8 423,231 99.53% 3_numerico_mas_de_8 1,999 0.47% top 20 valores concretos: 0 423,231 104101001 1,456 101101001 166 102101001 152 101111010 78 104101002 28 102108011 20 102104011 14 102106011 8 101101002 8 102103011 8 102107011 7 102109011 7 102101002 6 102105011 4 102101010 3 104102020 3 101111140 3 102102011 2 102106012 2
+
+
+==============================================================================
+CAP-12B · coseno nativo (sin UDF) · TOPE=200,000 · RUN_ID_G7=966ab5c4d538
+==============================================================================
+   catálogo: 18,881 códigos · vocabulario: 11,891 términos
+   pares distintos: 19,957,166 · tope 200,000 -> cubre 15,651,383/41,696,043 líneas (37.54%)
+   [!] quedan fuera 19,757,166 pares (99.0%), y NO al azar: el tope toma los
+       pares MÁS REPETIDOS. La cola larga —el texto raro, donde más se
+       equivoca cualquier método— queda fuera por construcción.
+
+### 12B.E · ¿El código declarado es el mejor de su familia?
+    pares evaluados         : 200,000
+    líneas que representan  : 15,651,383
+    declarado ES el mejor   : 15.24%  (por línea)
+                              15.64%  (por CLP, sin sanear)
+    similitud 0 con TODOS los hermanos: 62.28%
+
+    VALIDACIÓN — con TOPE=200.000 esto tiene que dar 30,57% y 62,28%.
+    Si no replica, la celda está mal: se descarta y no se cita nada de ella.
+
+### 12B.E-bis · LA LECTURA CONDICIONAL — la que va al informe
+    el método sólo opinó en 37.72% de las líneas.
+    entre ésas, el código declarado ES el mejor de su familia en 40.40%.
+    CAP-12 compara SÓLO dentro de la clase N3 (join por fam6): mide 'dada la
+    familia correcta, ¿acertó la hoja?'. El tamiz de CAP-11 busca en los 18.881
+    códigos y mide otra cosa. Las dos cifras NO se contradicen — y por eso la
+    nota del Cmd 46 que usa el 7,67% para acotar el 30,57% está mal planteada.
+
+### 12B.F · Por rubro N1 — top 15 por volumen
+      N1         líneas    declarado = mejor
+      50      2,747,678               14.21%
+      42      2,680,961                6.47%
+      44      2,134,006               25.95%
+      14        782,954               14.57%
+      47        723,521                4.80%
+      60        622,625               25.41%
+      41        583,611                4.67%
+      31        451,570               13.67%
+      78        432,726               17.25%
+      51        387,208               46.91%
+      85        359,131                6.72%
+      90        337,569                6.25%
+      55        326,097                3.08%
+      30        210,401                6.49%
+      53        207,818               21.34%
+
+   export: /Volumes/workspace/default/mercado_publico/capstone_salidas/966ab5c4d538/cap12b_desacuerdos_top200.csv
+   [declarar] el export filtra mejor_sim > 0.15. Los desacuerdos por debajo
+   de ese umbral NO están en el CSV; el umbral es arbitrario y va declarado.
+No alcance a correr 12.e , se acabo el limite diario: 
+[aviso] el Cmd 40 anunció LIMITE_PARES_CAP12=2,000,000; esta corrida usa TOPE_PARES_CAP12=200,000. Manda el tope. ============================================================================== CAP-12 · Pipeline de Spark ML · RUN_ID_G7=966ab5c4d538 [v16 · parche serverless · TOPE_PARES_CAP12=200,000] ============================================================================== catálogo cargado: 18,881 códigos [materializado] cap12_pares -> /Volumes/workspace/default/mercado_publico/capstone_salidas/966ab5c4d538/_tmp_cap12_pares pares distintos (texto, código): 19,957,166 tope aplicado: 200,000 pares -> cubren 15,651,383 de 41,696,043 líneas evaluables (37.54%) [!] SE DEJARON FUERA 19,757,166 pares (99.0% de los pares). Declararlo: un tope silencioso se lee como cobertura total, y no lo es. Y el tope NO es aleatorio: toma los pares MÁS REPETIDOS. La cola larga —el texto raro, que es donde más se equivoca cualquiera— queda fuera por construcción. Esa es la salvedad que va al informe. pipeline ajustado sobre el catálogo · vocabulario = 11,891 términos [!] no se pudo materializar cap12_best (UnknownException): sigo sin materializar. Va a recalcular varias veces. 
+UnknownException: (DENY_NEW_AND_EXISTING_RESOURCES) BAD_REQUEST: Sorry, cannot run the resource because you have hit your free daily limit. Please come back again tomorrow.
+
+Instrument ML code with MLflow: Use MLflow to track metrics, params, and models from your training code. Learn more
+Don't show me this again 

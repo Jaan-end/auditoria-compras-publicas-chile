@@ -1,0 +1,47 @@
+==============================================================================
+CONCORDANCIA ENTRE TAMICES · lexico vs LSA
+==============================================================================
+  lexico: 300 filas · LSA: 300 filas · pareadas por _id: 300
+
+### 1 · BINARIO — ¿el codigo declarado aparece en el top-1, a cualquier nivel?
+      lexico acuerda:   63/300 =  21.00%
+         LSA acuerda:   32/300 =  10.67%
+  matriz 2x2   ambos-si=17  solo-lexico=46  solo-LSA=15  ambos-no=222
+  acuerdo observado = 79.67%   esperado por azar = 72.81%
+  kappa de Cohen = 0.2521   IC95 = [0.0846, 0.4196]
+  escala Landis-Koch: <0 nula · 0-0,20 muy debil · 0,21-0,40 debil ·
+                      0,41-0,60 moderada · 0,61-0,80 buena · >0,80 muy buena
+  McNemar exacto sobre los 61 pares discordantes: p = 0.000088
+  (p chico = la discordancia tiene DIRECCION, no es ruido simetrico)
+
+### 2 · ORDINAL — nivel de acuerdo (filas=lexico, cols=LSA)
+             ninguno       N1       N2       N3     hoja
+   ninguno       222       10        4        0        1
+        N1        13        2        0        1        0
+        N2        10        0        1        0        0
+        N3         6        0        2        4        1
+      hoja        17        2        1        0        3
+  kappa simple                 = 0.2151
+  kappa ponderado (cuadratico) = 0.2999
+
+### 3 · ¿PROPONEN EL MISMO CODIGO DE REEMPLAZO (top-1)?
+  15/300 = 5.00%
+  LECTURA: esto separa el DIAGNOSTICO (¿el declarado esta mal?) del
+  REMEDIO (¿cual deberia ser?). Los dos numeros pueden ser muy distintos,
+  y si lo son, el remedio no se cita como si fuera el diagnostico.
+
+### 4 · discordancia binaria por `tipo_oc` (solo grupos con n>=10)
+        SE: n= 121  discordantes= 32  ( 26.4%)
+        AG: n=  80  discordantes= 12  ( 15.0%)
+        CM: n=  55  discordantes= 10  ( 18.2%)
+        TD: n=  24  discordantes=  3  ( 12.5%)
+        MC: n=  16  discordantes=  2  ( 12.5%)
+  [1 grupos con n<10, agregados: n=4, discordantes=2 (50.0%) — no se abren, no sostienen lectura]
+
+### 4 · discordancia binaria por `rubro_n1` (solo grupos con n>=10)
+        42: n=  12  discordantes=  4  ( 33.3%)
+  [54 grupos con n<10, agregados: n=288, discordantes=57 (19.8%) — no se abren, no sostienen lectura]
+
+==============================================================================
+NINGUN NUMERO DE AQUI ES UNA CONCLUSION (§3.10). Releerlo contra su tabla.
+==============================================================================

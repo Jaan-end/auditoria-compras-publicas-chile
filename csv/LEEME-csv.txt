@@ -1,0 +1,21 @@
+csv/ — insumos de graficos_capstone.py
+======================================
+
+cap9_cascada.csv            [MEDIDO] RUN_ID_CAP=1314c4f6d481
+    Copiado literalmente de la tabla de 01-RESULTADOS-CORRIDA-1314c4f6d481.md
+    seccion 2, que a su vez es salida cruda de CAP-3.A. NO recalculado (regla
+    §1.20). Alimenta la figura 2 (embudo de trazabilidad) para que deje de
+    dibujarse con solo dos peldanos.
+    Escrito a mano el 28-ago-2026 · cero cupo.
+
+cap2_serie_onu_por_anio.csv   FALTA — lo escribe notebooks/CAP16_exportar_csv_figuras.py
+    columnas: anio;pct_completa;pct_restringida        -> figura 4
+
+cap9bis_auditoria_year.csv    FALTA — lo escribe el mismo CAP-16
+    columnas: anio;pct_discrepante                     -> figura 6
+
+v2_censura_por_anio.csv       FALTA — lo escribe local/auditoria_vintage.py (PC, 0 cupo)
+    columnas: anio_publicacion;pct_censuradas;presentes_en_corte_viejo -> figura 7
+
+Regla: ningun CSV de esta carpeta se edita a mano salvo que lleve arriba, en
+este archivo, la linea que dice de que salida cruda se copio.

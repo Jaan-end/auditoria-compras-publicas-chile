@@ -1,0 +1,102 @@
+catálogo: 18,881 códigos · matriz (18881, 47537)
+muestra : 300 líneas · 263 códigos distintos · 55 rubros N1
+
+==============================================================================
+RESULTADO DEL TAMIZ LÉXICO SOBRE n=300 (RUN_ID_G7=fb7c3b125bf7)
+==============================================================================
+
+### A · ¿el código declarado existe en el catálogo de 18.881?
+   sí: 299/300  (99.67%)
+   no: 1/300  (0.33%)
+
+### B · nivel en que el TOP-1 del tamiz coincide con el declarado
+   hoja       23    7.67%
+   N3         13    4.33%
+   N2         11    3.67%
+   N1         16    5.33%
+   ninguno   237   79.00%
+
+   acumulado (el tamiz acierta AL MENOS hasta...):
+   hoja       23    7.67%
+   N3         36   12.00%
+   N2         47   15.67%
+   N1         63   21.00%
+
+### C · rank del código declarado entre los 18.881 (n=299 con código en catálogo)
+   top-1            23    7.69%
+   top-3            41   13.71%
+   top-10           70   23.41%
+   top-100         137   45.82%
+   top-1000        195   65.22%
+   peor que 1000   104   34.78%
+   mediana del rank: 161 de 18.881
+   similitud media del declarado: 0.132
+   sim con el DECLARADO == 0: 9  (3.01%)
+   top1_sim == 0 (el tamiz no opinó): 0   <- distinto de lo anterior: sim 0 con el declarado no es abstencion
+
+### D · por tramo de monto
+             n  acierta_hoja_%  acierta_N1+_%
+tramo                                        
+1_bajo   174.0            8.62          23.56
+2_medio   95.0            6.32          15.79
+3_alto    31.0            6.45          22.58
+
+### E · por mecanismo
+             n  acierta_hoja_%  acierta_N1+_%
+tipo_oc                                      
+AG        80.0            6.25          13.75
+CC         4.0           50.00          75.00
+CM        55.0            9.09          20.00
+MC        16.0            0.00          12.50
+SE       121.0            8.26          26.45
+TD        24.0            4.17          16.67
+
+### F · 12 casos donde el tamiz discrepa MÁS (declarado fuera del top-1000)
+
+   texto     : traslado paciente d f c fecha traslado 16 03 2019 tramo copiapo stgo memorando n 100 s pediatri
+   declarado : 92101902 · servicios de ambulancia  (rank 17,941/18881, sim 0.002)
+   top1 tamiz: 42192404 · Carros médicos o accesorios  (sim 0.217)
+
+   texto     : kiyosaki robert padre rico padre pobre aguilar 9789569582271 kiyosaki robert padre rico padre p
+   declarado : 55101509 · libros de texto educativos o vocacionales  (rank 17,411/18881, sim 0.002)
+   top1 tamiz: 86111603 · Escuela para padres  (sim 0.168)
+
+   texto     : levantamiento critico diagnostico y modelo de gestion monumento historico ex estacion de colcha
+   declarado : 81101508 · ingenieria arquitectonica  (rank 17,338/18881, sim 0.012)
+   top1 tamiz: 93141713 · Servicios de protección de lugares históricos o monumentos  (sim 0.204)
+
+   texto     : estudio de perfiles caracteristicas y necesidades de los usuarios de conicyt exentos de i v a
+   declarado : 86141501 · asesorias educativas  (rank 17,243/18881, sim 0.009)
+   top1 tamiz: 60121604 · Accesorios de material de estudio  (sim 0.254)
+
+   texto     : polar con logo bordado talla s color azul segun cotizacion n 2020 12 polar con logo bordado tal
+   declarado : 53102901 · prendas de deporte y buzos de mujer  (rank 17,174/18881, sim 0.0)
+   top1 tamiz: 53141626 · Bastidores de bordado  (sim 0.174)
+
+   texto     : correlativo plan 5904 unidad requirente sd genomica y genetica molecular c c 03 11 00 00 cod fl
+   declarado : 12352204 · enzimas  (rank 16,815/18881, sim 0.012)
+   top1 tamiz: 44121507 · Sobres de catálogo  (sim 0.229)
+
+   texto     : adquisicion de estimulos para alumnos del liceo gonzalo guglielmi de yumbel estacion de acuerdo
+   declarado : 52161512 · parlantes  (rank 16,785/18881, sim 0.007)
+   top1 tamiz: 84101705 · Servicios de readquisición  (sim 0.235)
+
+   texto     : corchete 3 puestos detalles senalados en proceso de cotizacion id 859378 11 sc22 corchete 3 pue
+   declarado : 56101532 · mobiliario  (rank 16,321/18881, sim 0.007)
+   top1 tamiz: 44122103 · Corchetes  (sim 0.277)
+
+   texto     : prima de seguros colectivo de vida mes de noviembre 2016 segun factura 11185
+   declarado : 94101806 · sindicatos de personal medico  (rank 16,057/18881, sim 0.005)
+   top1 tamiz: 84131515 · Seguro colectivo para joyeros  (sim 0.399)
+
+   texto     : barra fibra carbono d 11 l150 n material 394 820 barra fibra carbono d 11 l150 n material 394 8
+   declarado : 56101501 · soportes  (rank 16,028/18881, sim 0.0)
+   top1 tamiz: 31321102 · Conjuntos unidos de acero al carbono en barras  (sim 0.386)
+
+   texto     : drenaje biliar percutaneo bloqueo de plexo celiaco folio redcap 898 19 12 2025
+   declarado : 85121609 · servicios quirurgicos  (rank 15,953/18881, sim 0.001)
+   top1 tamiz: 42294941 · Sets de drenaje biliar por endoscopia  (sim 0.19)
+
+   texto     : 20 m2 de espuma niveladora
+   declarado : 32101527 · terminaciones  (rank 14,786/18881, sim 0.002)
+   top1 tamiz: 13111307 · Espuma de goma  (sim 0.357)

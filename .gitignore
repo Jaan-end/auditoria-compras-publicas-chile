@@ -216,3 +216,22 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# datos crudos y resultados pesados
+/data/raw/
+*.parquet
+*.zip
+
+# cachés y checkpoints de Python / Jupyter
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# entornos y credenciales
+.env
+venv/
+.venv/
+
+# archivos del sistema
+.DS_Store
+Thumbs.db

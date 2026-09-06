@@ -1,0 +1,269 @@
+==============================================================================
+PASO 0-B · LICITACIONES POR MES DE PUBLICACION — VIEJO vs NUEVO
+==============================================================================
+  carpeta nueva : <CARPETA_LOCAL>\Mercado Publico\new
+  tipo          : lic   encoding: latin-1   sep: ';'
+  archivos a leer: 44
+      lic_2023-1.csv                                                192,813 filas
+      lic_2023-10.csv                                               221,374 filas
+      lic_2023-11.csv                                               240,902 filas
+      lic_2023-12.csv                                               144,111 filas
+      lic_2023-2.csv                                                211,857 filas
+      lic_2023-3.csv                                                251,546 filas
+      lic_2023-4.csv                                                193,478 filas
+      lic_2023-5.csv                                                242,916 filas
+      lic_2023-6.csv                                                235,229 filas
+      lic_2023-7.csv                                                242,143 filas
+      lic_2023-8.csv                                                245,559 filas
+      lic_2023-9.csv                                                131,585 filas
+      lic_2024-1.csv                                                206,454 filas
+      lic_2024-10.csv                                               220,636 filas
+      lic_2024-11.csv                                               209,934 filas
+      lic_2024-12.csv                                               110,228 filas
+      lic_2024-2.csv                                                221,071 filas
+      lic_2024-3.csv                                                225,691 filas
+      lic_2024-4.csv                                                263,050 filas
+      lic_2024-5.csv                                                226,748 filas
+      lic_2024-6.csv                                                206,870 filas
+      lic_2024-7.csv                                                226,093 filas
+      lic_2024-8.csv                                                216,908 filas
+      lic_2024-9.csv                                                178,603 filas
+      lic_2025-1.csv                                                126,071 filas
+      lic_2025-10.csv                                               127,449 filas
+      lic_2025-11.csv                                               124,982 filas
+      lic_2025-12.csv                                                98,204 filas
+      lic_2025-2.csv                                                150,032 filas
+      lic_2025-3.csv                                                177,113 filas
+      lic_2025-4.csv                                                181,711 filas
+      lic_2025-5.csv                                                174,842 filas
+      lic_2025-6.csv                                                153,824 filas
+      lic_2025-7.csv                                                147,814 filas
+      lic_2025-8.csv                                                147,044 filas
+      lic_2025-9.csv                                                124,680 filas
+      lic_2026-1.csv                                                118,536 filas
+      lic_2026-2.csv                                                125,814 filas
+<CARPETA_LOCAL>\Codigos\paso0b_meses_viejo_vs_nuevo.py:225: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  fp2 = pd.to_datetime(trozo.loc[malas, c_fp].astype(str).str.slice(0, 10),
+      lic_2026-3.csv                                                160,248 filas
+      lic_2026-4.csv                                                154,423 filas
+      lic_2026-5.csv                                                133,436 filas
+      lic_2026-6.csv                                                160,727 filas
+      lic_2026-7.csv                                                130,688 filas
+      lic_2026-8.csv                                                 58,318 filas
+
+  total leido: 7,841,755 filas
+
+==============================================================================
+TABLA MES A MES  (licitaciones distintas por mes de PUBLICACION)
+==============================================================================
+  mes pub         viejo      nuevo      delta   delta %   marca
+  ------------------------------------------------------------------
+  2023-01        10,232     10,233         +1    +0.01%   ok
+  2023-02        10,789     10,792         +3    +0.03%   ok
+  2023-03        12,872     12,877         +5    +0.04%   ok
+  2023-04        11,610     11,619         +9    +0.08%   ok
+  2023-05        13,531     13,535         +4    +0.03%   ok
+  2023-06        12,810     12,815         +5    +0.04%   ok
+  2023-07        12,881     12,887         +6    +0.05%   ok
+  2023-08        14,002     14,016        +14    +0.10%   ok
+  2023-09         9,088      9,101        +13    +0.14%   ok
+  2023-10        14,563     14,577        +14    +0.10%   ok
+  2023-11        16,556     16,636        +80    +0.48%   ok
+  2023-12        10,477     10,496        +19    +0.18%   ok
+  2024-01        11,685     11,712        +27    +0.23%   ok
+  2024-02        12,439     12,458        +19    +0.15%   ok
+  2024-03        12,166     12,189        +23    +0.19%   ok
+  2024-04        14,848     14,871        +23    +0.15%   ok
+  2024-05        14,096     14,122        +26    +0.18%   ok
+  2024-06        12,596     12,616        +20    +0.16%   ok
+  2024-07        13,939     13,955        +16    +0.11%   ok
+  2024-08        14,497     14,516        +19    +0.13%   ok
+  2024-09        11,496     11,510        +14    +0.12%   ok
+  2024-10        15,410     15,431        +21    +0.14%   ok
+  2024-11        15,068     13,587     -1,481    -9.83%   caida > 2%
+  2024-12         8,230      7,175     -1,055   -12.82%   caida > 2%
+  2025-01         7,775      7,000       -775    -9.97%   caida > 2%
+  2025-02         8,475      7,534       -941   -11.10%   caida > 2%
+  2025-03         9,302      8,484       -818    -8.79%   caida > 2%
+  2025-04        10,321      9,383       -938    -9.09%   caida > 2%
+  2025-05         9,575      8,725       -850    -8.88%   caida > 2%
+  2025-06         9,516      8,711       -805    -8.46%   caida > 2%
+  2025-07        10,320      9,354       -966    -9.36%   caida > 2%
+  2025-08         9,611      8,722       -889    -9.25%   caida > 2%
+  2025-09         8,765      7,879       -886   -10.11%   caida > 2%
+  2025-10        10,041      9,043       -998    -9.94%   caida > 2%
+  2025-11         8,627      8,627         +0    +0.00%   ok
+  2025-12         7,070      7,070         +0    +0.00%   ok
+  2026-01         7,198      7,199         +1    +0.01%   ok
+  2026-02         7,526      7,526         +0    +0.00%   ok
+  2026-03         7,895      7,900         +5    +0.06%   ok
+  2026-04         7,782      7,819        +37    +0.48%   ok
+  2026-05         7,458      7,558       +100    +1.34%   ok
+  2026-06         8,368      8,615       +247    +2.95%   ok
+  2026-07         6,317      7,814     +1,497   +23.70%   ok
+  2026-08            59      3,050     +2,991 +5069.49%   ok
+
+  PUBLICACIONES FUERA DEL RANGO 2023-2026 (revisar: el filtro de la
+  descarga no es por mes de publicacion, o hay fechas corruptas):
+    1900-01            31
+
+  filas sin fecha de publicacion parseable: 145 (0.002% de lo leido)
+    lic_2026-3.csv                                                    145
+
+==============================================================================
+VEREDICTO — que hipotesis sobrevive
+==============================================================================
+  deficit total (suma de los deltas negativos): -11,402
+
+  NINGUN mes falta entero: el deficit esta REPARTIDO. Eso descarta H1.
+  meses con caida: 12   peores:
+      2024-12      -1,055  (-12.82%)
+      2025-02        -941  (-11.10%)
+      2025-09        -886  (-10.11%)
+      2025-01        -775  (-9.97%)
+      2025-10        -998  (-9.94%)
+      2024-11      -1,481  (-9.83%)
+
+  H2 GANA (carpeta equivocada). La caida se concentra hacia el
+  presente, que es justo donde viven los procesos todavia abiertos.
+  Un proceso abierto esta en Vigente, no en Historico: bajar solo
+  Historico de un anio reciente deja fuera los procesos largos.
+  ACCION: revisar de QUE carpeta de ChileCompra salio cada archivo
+  (Licitaciones_Nacional_Historico vs _Vigente) antes de convertir.
+
+PASO 0-B termina. Pegar esta salida completa en el chat.
+
+PASO 0-D · COLUMNAS DE FECHA - ¿hecho o intencion?
+hoy = 2026-08-28
+==============================================================================
+
+1a · COLUMNAS DE FECHA EN EL CORTE VIEJO (esquema_v1.json)
+   [aviso] El JSON se leyo, pero no se encontraron nombres con 'Fecha'.
+
+1b · COLUMNAS DE FECHA EN LA RE-DESCARGA - archivo lic_2023-1.csv
+   110 columnas en el CSV; 18 de fecha:
+      FechaCreacion
+      FechaCierre
+      FechaInicio
+      FechaFinal
+      FechaPubRespuestas
+      FechaActoAperturaTecnica
+      FechaActoAperturaEconomica
+      FechaPublicacion
+      FechaAdjudicacion
+      FechaEstimadaAdjudicacion
+      FechaSoporteFisico
+      FechaTiempoEvaluacion
+      FechaEstimadaFirma
+      FechasUsuario
+      FechaVisitaTerreno
+      FechaEntregaAntecedentes
+      FechaAprobacion
+      FechaEnvioOferta
+
+   *** HAY 2 COLUMNAS DE FECHA DE ADJUDICACION: ['FechaAdjudicacion', 'FechaEstimadaAdjudicacion']
+   *** Comparar FechaAdjudicacion con FechaEstimadaAdjudicacion.
+   *** La estimada puede contener fechas futuras porque es una intencion.
+
+2 · PERFIL DE CADA COLUMNA DE FECHA (leyendo lic_2023-1.csv completo)
+   10,233 licitaciones distintas en el archivo
+
+   columna                                  % con dato  % parsea      minimo      maximo  % futuro hoy
+   -----------------------------------------------------------------------------------------------
+   FechaCreacion                                100.0%    100.0%  2022-03-08  2023-01-31        0.00%
+   FechaCierre                                  100.0%    100.0%  2023-01-09  2023-05-23        0.00%
+   FechaInicio                                  100.0%    100.0%  2023-01-03  2023-02-24        0.00%
+   FechaFinal                                   100.0%    100.0%  2023-01-04  2023-03-16        0.00%
+   FechaPubRespuestas                           100.0%    100.0%  2023-01-05  2023-04-10        0.00%
+   FechaActoAperturaTecnica                     100.0%    100.0%  2022-01-16  2023-05-23        0.00%
+   FechaActoAperturaEconomica                   100.0%    100.0%  2022-01-16  2023-05-23        0.00%
+   FechaPublicacion                             100.0%    100.0%  2023-01-03  2023-01-31        0.00%
+   FechaAdjudicacion                             99.9%    100.0%  2023-01-09  2025-04-08        0.00%
+   FechaEstimadaAdjudicacion                    100.0%    100.0%  1900-01-01  2029-03-07        0.01%
+   FechaSoporteFisico                           100.0%    100.0%  1900-01-01  2023-05-23        0.00%
+   FechaTiempoEvaluacion                        100.0%      0.0%           -           -        0.00%
+   FechaEstimadaFirma                           100.0%    100.0%  1900-01-01  2023-07-24        0.00%
+   FechasUsuario                                100.0%      0.0%           -           -        0.00%
+   FechaVisitaTerreno                           100.0%    100.0%  1900-01-01  1900-01-01        0.00%
+   FechaEntregaAntecedentes                     100.0%    100.0%  1900-01-01  1900-01-01        0.00%
+   FechaAprobacion                               84.4%    100.0%  2002-01-17  2024-03-27        0.00%
+   FechaEnvioOferta                             100.0%    100.0%  2023-01-03  2023-05-23        0.00%
+
+3 · REZAGO desde FechaPublicacion (dias)
+   columna                                    mediana       p90  % negativo  % futura al publicar
+   -------------------------------------------------------------------------------------------
+   FechaCreacion                                    0         0       45.3%                 0.0%
+   FechaCierre                                     10        21        0.0%               100.0%
+   FechaInicio                                      0         0        0.0%                 7.9%
+   FechaFinal                                       3         9        0.0%               100.0%
+   FechaPubRespuestas                               5        13        0.0%               100.0%
+   FechaActoAperturaTecnica                        10        22        0.1%                99.9%
+   FechaActoAperturaEconomica                      10        22        0.1%                99.9%
+   FechaAdjudicacion                               26        75        0.0%               100.0%
+   FechaEstimadaAdjudicacion                       31        80        0.0%               100.0%
+   FechaSoporteFisico                              12        32        0.3%                99.7%
+   FechaEstimadaFirma                              41       104        0.0%               100.0%
+   FechaAprobacion                                 22        68        1.8%                98.1%
+   FechaEnvioOferta                                 8        20        0.0%                98.7%
+
+LECTURA RECOMENDADA
+- FechaAdjudicacion describe el hecho observado solo si no se completa antes de ocurrir.
+- FechaEstimadaAdjudicacion es una fecha planificada y puede ser futura.
+- Fechas 1900-01-01 se interpretan como valores centinela, no como hechos reales.
+- Montos y cantidades con la palabra 'Adjudica' ya no se analizan como fechas.
+============================================================================================
+PASO 0-E · INVENTARIO FISICO DEL VOLUMEN   (dbutils.fs.ls — cero acciones de Spark)
+============================================================================================
+  base: /Volumes/workspace/default/mercado_publico
+
+  particion                          parquets  otros          MB    filas ref  bytes/fila
+  ------------------------------------------------------------------------------------------
+  lic_historico/2017                        1      0       401.6    3,471,351       115.7
+  lic_historico/2018                        1      0       353.0    2,976,218       118.6
+  lic_historico/2019                        1      0       330.4    2,770,490       119.3
+  lic_historico/2020                        1      0       248.6    1,885,769       131.8
+  lic_historico/2021                        1      0       243.2    1,672,960       145.4
+  lic_historico/2022                        1      0       304.1    2,161,440       140.7
+  lic_historico/2023                        1      0       338.4    2,542,605       133.1
+  lic_historico/2024                        1      0       356.4    3,070,577       116.1
+  lic_historico/2025                        1      0       305.2    4,812,550        63.4
+  oc_historico/2017                         1      0     1,410.4    6,609,983       213.4
+  oc_historico/2018                         1      0     1,416.0    6,614,357       214.1
+  oc_historico/2019                         1      0     1,313.7    6,209,651       211.6
+  oc_historico/2020                         1      0       942.6    4,408,740       213.8
+  oc_historico/2021                         1      0       948.6    4,266,941       222.3
+  oc_historico/2022                         1      0     1,073.0    4,728,085       226.9
+  oc_historico/2023                         1      0     1,336.6    5,167,807       258.6
+  oc_historico/2024                         1      0     1,417.3    5,344,111       265.2
+  oc_historico/2025                         1      0     1,385.1    5,150,919       268.9
+  lic_vigente/2026                          1      0       142.6      948,445       150.3
+  oc_vigente/2026                           1      0       781.6    2,950,934       264.9
+
+============================================================================================
+LECTURA
+============================================================================================
+
+  Una sola parte por particion en todas. Entonces el x3 de F25 §2 NO es
+  un archivo duplicado al lado: viene DENTRO del parquet, o sea que se
+  construyo con la lista de CSV repetida. Se confirma en el PC con el
+  inventario de la carpeta de descarga (F25 §6), y se arregla
+  reconstruyendo esa particion, no borrando archivos aca.
+
+  bytes por fila declarada (licitaciones) — mediana 131.8:
+      year=2017:    115.7
+      year=2018:    118.6
+      year=2019:    119.3
+      year=2020:    131.8
+      year=2021:    145.4
+      year=2022:    140.7
+      year=2023:    133.1
+      year=2024:    116.1
+      year=2025:     63.4  *** pesa muy poco por fila: filas repetidas comprimen
+      year=2026:    150.3
+
+  Las filas duplicadas casi no ocupan espacio (snappy las comprime muy
+  bien), asi que una particion inflada se delata por pesar poco por fila
+  DECLARADA. Es indicio, no prueba: la prueba es el conteo distinto.
+
+PASO 0-E termina. Cero acciones de Spark consumidas.
+Pegar esta salida completa en el chat.
