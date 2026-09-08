@@ -3,15 +3,6 @@
 # CAP-13 · Segunda mirada algorítmica (Word2Vec) + placebo del semi-join
 # ESTADO: [PROPUESTA] — escrito el 26-ago-2026, NO CORRIDO EN DATABRICKS.
 #
-# No hay acceso al clúster desde este chat (Regla 1 del proyecto: "no se
-# infiere, se comprueba"). Este archivo se escribió con las mismas
-# convenciones del resto del notebook (cap_resolver, cap_global,
-# cap_print_tabla, RUN_ID_G7/RUN_ID_CAP, banners de impresión) para que se
-# pueda pegar tal cual, correr, y citar con su propio RUN_ID — pero cualquier
-# cifra que produzca la primera vez debe tratarse como [POR VERIFICAR] hasta
-# reproducirla en una segunda corrida independiente, exactamente igual que se
-# hizo con la Celda 9 (ver F19-HALLAZGOS-25-AGO-CELDA9-Y-ANOMALIAS.md §2.4.1
-# y la Parte 7 de la Guía de estudio actualizada).
 #
 # CÓMO USARLO:
 #   Bloque 1 (CAP-13)      — pegar como celda nueva DESPUÉS de CAP-12
