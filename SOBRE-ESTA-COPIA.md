@@ -22,8 +22,6 @@ superadas de código, o metadatos de máquina local.
   decisiones, correcciones y calendario internos. Se conservan `01-RESULTADOS`,
   `02-CIERRE-DE-LAS-CIFRAS-EN-PESOS` y `F26` porque son los documentos a los que el
   informe final remite para trazar sus cifras.
-- **`docs/CORREO-PROFESOR-borrador.md`**: borrador de correo personal al profesor.
-  No es evidencia del proyecto.
 - **`GUIA-PASO-A-PASO.html`**: checklist operativo personal del autor (comandos de
   PowerShell contra su carpeta local), no necesario para reproducir el análisis.
 - **`local/VERIFICAR-2024-11.txt`**: nota de un chequeo puntual ya resuelto e
