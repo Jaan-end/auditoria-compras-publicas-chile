@@ -32,21 +32,6 @@ CITABLE  (28-ago-2026 · sesion 25 · RUN_ID_P0 = 770618aa84a4)
       El paso 0-B y el 0-D no gastaron cupo (corren en el PC); el 0-E tampoco
       (dbutils.fs.ls es metadato, no una accion de Spark).
 
-PENDIENTE DE CORRER (sesion 31, 31-ago-2026) — celdas nuevas, todavia sin salida real
-  cap11d_enriquecido_30_casos.csv
-      Lo escribe la celda nueva "CAP-11-D" agregada al final de
-      notebooks/etapa2_ANEXO_PROFESOR_v19.py. Trae codigo_licitacion, codigo_oc,
-      si el ONU declarado estaba o no en la licitacion de origen, y el CLP real
-      de la linea (no el del estrato) — todo lo que cap11c_muestra_reponderada.csv
-      no trae y bloqueaba construir la tabla de los 30 casos. Bajarlo aqui
-      DESPUES de correrlo en Databricks, con ese nombre exacto.
-  tabla_30_casos.csv
-      La escribe local/enriquecer_muestra_30_casos.py, cruzando
-      cap11c_muestra_reponderada.csv contra cap11d_enriquecido_30_casos.csv
-      (verifica que los 300 `_id` de los dos archivos son identicos antes de
-      escribir nada). Trae los 4 grupos del protocolo F10, con la URL de la
-      ficha marcada [POR VERIFICAR] hasta confirmar el esquema real de URL de
-      mercadopublico.cl. Ver docs/F30-CIERRE-SESION-31-31-AGO.md.
 
 CORRECCIONES DE ESTA SESION, no tocan archivos de este directorio pero SI
 tocan cifras citadas en el informe — ver docs/F30-CIERRE-SESION-31-31-AGO.md:
