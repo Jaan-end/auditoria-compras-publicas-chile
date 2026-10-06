@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "Si usa este trabajo, por favor cítelo así."
+title: "Qué compra y cuánto paga el Estado: auditoría nacional de la capa de producto en las compras públicas de Chile, 2017-2026"
+abstract: >-
+  Análisis del dato abierto de Mercado Público (Chile): 51,4 millones de líneas de orden de compra
+  y 26,3 millones de registros de licitación. Mide la consistencia del código de producto
+  ONU/UNSPSC entre licitación y orden de compra, el efecto del artículo 20 bis de la Ley 19.886, y
+  la circularidad entre la especificación de texto y el código. Hallazgo principal: solo el 19,73 %
+  del universo permite formular la pregunta de trazabilidad.
+type: software
+authors:
+  - family-names: "Cuesta"
+    given-names: "Jeancarlo"
+keywords:
+  - compras públicas
+  - public procurement
+  - datos abiertos
+  - open data
+  - Chile
+  - UNSPSC
+  - calidad de datos
+  - PySpark
+license: MIT
+date-released: 2026-09-09

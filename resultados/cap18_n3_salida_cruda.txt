@@ -1,0 +1,134 @@
+CAP-18 / N3 — clasificador supervisado de codigo ONU sobre TF-IDF
+Salida de la corrida del 7-sep-2026 · RUN_ID_N3 = 5a53ec4a1f30
+Databricks Free Edition, serverless · celda notebooks/CAP18_n3_clasificador_onu.py
+
+=============================================================================
+PROCEDENCIA DE ESTE ARCHIVO — LEER ANTES DE CITAR (regla 1 / regla 3.14)
+=============================================================================
+Este archivo es una TRANSCRIPCION de la salida que la celda imprimio en
+Databricks, pegada por el usuario en el chat el 7-sep-2026 y reconstruida en
+su formato de lineas. LOS VALORES SON LITERALES; los saltos de linea y la
+alineacion de columnas se reconstruyeron, porque el pegado del chat los
+colapso.
+
+QUE SIGNIFICA ESO, DICHO SIN ADORNOS: esto NO es una exportacion byte a byte
+del cuaderno. Sirve para que ninguna cifra citada quede sin archivo que
+señalar, que es lo que exige la regla 3.14. Si se quiere el archivo exacto,
+hay que re-ejecutar la celda y exportar la salida desde Databricks — la
+corrida es reproducible y su semilla esta fijada (SEED_N3 = 20260907).
+
+CORRIDA ANTERIOR DEL MISMO DIA: fa2bca7b426b, abortada al materializar
+(DBFS_DISABLED / SQLSTATE 56038 — Free Edition tiene el DBFS root publico
+deshabilitado). Alcanzo a imprimir el embudo completo, y sus SEIS cifras
+coinciden EXACTO con las de esta corrida. Eso es una verificacion de
+reproducibilidad del embudo, del mismo tipo que 1314c4f6d481 -> 70680deaec66.
+=============================================================================
+
+==============================================================================
+CAP-18 · N3 — clasificador supervisado ONU · RUN_ID_N3 = 5a53ec4a1f30
+==============================================================================
+  split          : train <= 2023 · test >= 2024 (POR AÑO, no aleatorio)
+  tope train     : 600,000 filas · seed 20260907
+  vocabulario    : 20,000 terminos · minDF 5 · minTokens 3
+  modelos        : NaiveBayes + LogisticRegression
+  granularidad   : segmento (2 dig) — NUNCA 8
+  materializa en : tabla de Unity Catalog (se nombra en 18.D)
+
+### 18.B · columnas resueltas
+   ONU oc                  : onu_oc
+   ONU lic                 : onu_lic
+   key oc                  : codigo_licitacion
+   key lic                 : codigo_externo
+   espec. comprador        : _sinclasificar_EspecificacionComprador
+   espec. proveedor        : _sinclasificar_EspecificacionProveedor
+   generico (SOLO filtro)  : _sinclasificar_NombreroductoGenerico
+   año                     : _year
+
+==============================================================================
+### 18.C.1 · EMBUDO DE ETIQUETAS · RUN_ID_N3 = 5a53ec4a1f30
+==============================================================================
+  lineas de OC enlazadas, con ONU valido y con texto :     15,318,366
+  · nivel A AMPLIO   (codigo en el set de su lic.)   :     10,460,749  68.29%
+  · nivel A ESTRICTO (lic. declara 1 solo codigo)    :      5,973,071  38.99%
+    - tras quitar texto CIRCULAR                     :      5,766,247  96.54% del estricto
+    - tras quitar texto con el CODIGO dentro         :      5,764,974  96.52%
+    - tras quitar RELLENO y texto corto  = ENTRENABLE:      5,583,284  93.47%
+
+  LEER ESTO ANTES DE SEGUIR: si `n_cand` no esta en el orden de los
+  millones, el join esta mal y NADA de lo que sigue sirve. Parar aqui.
+
+  [tope] se muestrea fraction=0.3224 con seed=20260907 para no pasar 600,000 filas de entrenamiento.
+
+  [materializado] tabla UC: workspace.default.cap18_train_5a53ec4a1f30
+
+==============================================================================
+### 18.D.1 · TABLA DE ENTRENAMIENTO (deduplicada por texto)
+==============================================================================
+  textos distintos            :      926,282
+  · lineas que representan    :    1,689,372  (factor 1.8x)
+  train (año <= 2023)         :      625,946
+  test  (año >= 2024)         :      300,336
+  clases segmento (2 digitos) :           55
+  clases familia  (4 digitos) :          342
+
+==============================================================================
+### 18.F · SEGMENTO (2 digitos)
+==============================================================================
+
+------------------------------------------------------------------------------
+  entrenando NaiveBayes · objetivo = segmento (2 dig)
+------------------------------------------------------------------------------
+    n test            : 300,336 textos · 55 clases vistas
+    accuracy          :  57.44%
+    BASELINE mayoritaria (clase 42) :  15.62%
+    ganancia sobre baseline               : +41.82 pp
+    macro-F1          : 0.4292   <- la cifra honesta
+    F1 ponderado      : 0.5885   (lo que Spark llama 'f1')
+
+------------------------------------------------------------------------------
+  entrenando LogisticRegression · objetivo = segmento (2 dig)
+------------------------------------------------------------------------------
+    n test            : 300,336 textos · 55 clases vistas
+    accuracy          :  63.93%
+    BASELINE mayoritaria (clase 42) :  15.62%
+    ganancia sobre baseline               : +48.31 pp
+    macro-F1          : 0.4687   <- la cifra honesta
+    F1 ponderado      : 0.6287   (lo que Spark llama 'f1')
+
+### 18.G · FAMILIA (4 digitos) — NO se corrio.
+    CORRE_FAMILIA4 = False a proposito. Mirar el resultado de
+    segmento primero; si convence, poner True y volver a correr
+    SOLO esta celda. Asi el cupo se gasta en dos decisiones, no
+    en una apuesta.
+
+    [NOTA POSTERIOR: la familia SI se corrio, minutos despues, con la celda
+     CAP18B_familia4.py, que lee esta misma tabla materializada sin recomputar
+     el embudo. Su salida esta en resultados/cap18b_familia4_salida_cruda.txt]
+
+==============================================================================
+### 18.H · RESUMEN · RUN_ID_N3 = 5a53ec4a1f30
+==============================================================================
+  objetivo           modelo                    acc     base     gan.   macroF1    wtdF1
+  segmento (2 dig)   NaiveBayes             57.44%   15.62%  +41.82    0.4292   0.5885
+  segmento (2 dig)   LogisticRegression     63.93%   15.62%  +48.31    0.4687   0.6287
+
+  Referencia externa [DOC], NO resultado propio:
+    CLiC-it 2023 (misma tarea, CPV europeo): acc 77.7% · macro-F1 0.4
+    Re-verificar en fuente primaria antes de citarla (regla 2).
+
+  COMO SE CITA ESTO (regla 1):
+    · marca [MEDIDO], run_id = 5a53ec4a1f30, fecha de esta corrida
+    · muestra: 926,282 textos distintos de nivel A estricto,
+      no circulares, split por año (train <= 2023)
+    · SIEMPRE con el baseline al lado. Un accuracy solo, no.
+    · SIEMPRE macro-F1, no solo accuracy: la cola larga se predice mal
+      y el accuracy la esconde.
+    · el sesgo de A_ESTRICTO (compras de un solo codigo) va declarado.
+
+  QUE NO SE PUEDE DECIR CON ESTO:
+    · que una linea en desacuerdo con el modelo este mal codificada.
+      Es una ALERTA, y el macro-F1 dice cuanta desconfianza merece.
+    · nada sobre las lineas SIN texto evaluable (18,13% del universo):
+      este modelo no las ve, por construccion.
+
+CAP-18 termina. RUN_ID_N3 = 5a53ec4a1f30

@@ -1,0 +1,92 @@
+CAP-18-B / N3 a nivel de FAMILIA (4 digitos)
+Salida de la corrida del 7-sep-2026 · celda notebooks/CAP18B_familia4.py
+Lee la tabla de entrenamiento de la corrida RUN_ID_N3 = 5a53ec4a1f30
+
+=============================================================================
+DOS SALVEDADES QUE VAN PEGADAS A ESTAS CIFRAS
+=============================================================================
+1) PROCEDENCIA. Este archivo es una TRANSCRIPCION de la salida que la celda
+   imprimio en Databricks, pegada por el usuario en el chat el 7-sep-2026 y
+   reconstruida en su formato de lineas. LOS VALORES SON LITERALES; los saltos
+   de linea y la alineacion se reconstruyeron. NO es una exportacion byte a
+   byte: si se quiere el archivo exacto, re-ejecutar y exportar desde
+   Databricks.
+
+2) TRAZABILIDAD. Esta celda NO acuña identificador de corrida propio: se cita
+   por el de la tabla que consume (5a53ec4a1f30). Es un descuido de diseño de
+   la celda, no un problema de calculo — la tabla de entrenamiento si tiene
+   identificador. Esta declarado tambien en el informe (§4.2) y en
+   claude/F35-cap18-n3-resultado.md.
+=============================================================================
+
+==============================================================================
+CAP-18-B · N3 familia (4 digitos) · lee workspace.default.cap18_train_5a53ec4a1f30
+==============================================================================
+
+  textos            :    926,282
+  train (<= 2023)   :    625,946
+  test  (>= 2024)   :    300,336
+  · de ellos LIMPIOS (_n_rep = 1, no pueden ser ambiguos):    259,223  (86.3%)
+  clases familia    :        342
+
+------------------------------------------------------------------------------
+  entrenando NaiveBayes · objetivo = familia (4 dig)
+------------------------------------------------------------------------------
+    BASELINE mayoritaria (familia 7811) :   7.61%
+
+    (a) TEST COMPLETO        n=  300,336 · 328 clases
+        accuracy  48.66%  ·  macro-F1 0.2481  ·  ponderado 0.4944
+    (b) TEST LIMPIO (_n_rep=1) n=  259,223 · 326 clases
+        accuracy  48.76%  ·  macro-F1 0.2471  ·  ponderado 0.4966
+
+    DIFERENCIA (b - a)  accuracy  +0.10 pp  ·  macro-F1 -0.0010
+    -> Las dos cifras coinciden. La contaminacion de etiqueta de
+       familia es INMATERIAL. Se cita (a), el test completo.
+
+------------------------------------------------------------------------------
+  entrenando LogisticRegression · objetivo = familia (4 dig)
+------------------------------------------------------------------------------
+    BASELINE mayoritaria (familia 7811) :   7.61%
+
+    (a) TEST COMPLETO        n=  300,336 · 328 clases
+        accuracy  56.58%  ·  macro-F1 0.2739  ·  ponderado 0.5469
+    (b) TEST LIMPIO (_n_rep=1) n=  259,223 · 326 clases
+        accuracy  56.90%  ·  macro-F1 0.2726  ·  ponderado 0.5498
+
+    DIFERENCIA (b - a)  accuracy  +0.33 pp  ·  macro-F1 -0.0013
+    -> Las dos cifras coinciden. La contaminacion de etiqueta de
+       familia es INMATERIAL. Se cita (a), el test completo.
+
+==============================================================================
+### RESUMEN · familia (4 dig) · tabla de RUN_ID_CAP18 = 5a53ec4a1f30
+==============================================================================
+  modelo                  base   acc(a)  macro(a)   acc(b)  macro(b)
+  NaiveBayes             7.61%   48.66%    0.2481   48.76%    0.2471
+  LogisticRegression     7.61%   56.58%    0.2739   56.90%    0.2726
+
+  (a) test completo · (b) test limpio, textos de una sola linea de origen
+
+  COMO SE CITA: [MEDIDO], tabla de la corrida 5a53ec4a1f30, esta celda,
+  SIEMPRE con el baseline al lado y SIEMPRE declarando cual de las dos
+  columnas se esta citando y por que.
+
+CAP-18-B termina.
+
+=============================================================================
+LECTURA CONJUNTA CON EL SEGMENTO — lo que ninguno de los dos niveles dice solo
+=============================================================================
+  segmento (2 dig, 55 clases) : LogReg 63.93% · baseline 15.62% · +48.31 pp
+                                macro-F1 0.4687
+  familia  (4 dig, 342 clases): LogReg 56.58% · baseline  7.61% · +48.97 pp
+                                macro-F1 0.2739
+
+La ganancia sobre el azar es CASI LA MISMA en los dos niveles, y sin embargo
+el macro-F1 se cae A LA MITAD. No es contradiccion: es la definicion del
+problema de cola larga. Al pasar de 55 a 342 clases lo que crece no es la
+dificultad promedio, sino la cantidad de clases raras sobre las que el modelo
+no tiene con que aprender. El accuracy casi no lo nota porque esas clases
+aportan pocas lineas; el macro-F1 si, porque les da el mismo peso.
+
+LECTURA OPERATIVA: a nivel de segmento el modelo sirve para priorizar que
+mira un revisor; a nivel de familia, cada vez menos. A 8 digitos (18.881
+clases) NO se intento, por diseño.

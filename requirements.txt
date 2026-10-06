@@ -1,0 +1,12 @@
+# Para lo que corre en un PC (local/): figuras, tamices, auditorias y tests.
+# Los notebooks/ corren en Databricks, que ya trae PySpark.
+pandas
+numpy
+pyarrow
+matplotlib
+scikit-learn
+openpyxl
+
+# Opcional: solo lo usa local/screener_onu_semantico.py, que cae a LSA
+# (scikit-learn) si no esta.
+# sentence-transformers

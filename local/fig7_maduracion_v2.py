@@ -79,6 +79,6 @@ fig.text(.02,.028,
  "queda fuera de escala y fuera del corte. La figura es honesta pero esta incompleta.",
  fontsize=7.3,color=INK2,va="bottom",linespacing=1.5)
 fig.subplots_adjust(left=.10,right=.985,top=.90,bottom=.185)
-fig.savefig("figuras/fig7_maduracion_v2.png",dpi=220)
-fig.savefig("figuras/fig7_maduracion_v2.pdf")
+fig.savefig("/home/claude/fig7_maduracion_v2.png",dpi=220)
+fig.savefig("/home/claude/fig7_maduracion_v2.pdf")
 print("ok")

@@ -1,7 +1,8 @@
+NOTA: rutas locales redactadas por local/redactar_rutas_locales.py. Ninguna cifra fue modificada.
 ==============================================================================
 PASO 0-B · LICITACIONES POR MES DE PUBLICACION — VIEJO vs NUEVO
 ==============================================================================
-  carpeta nueva : <CARPETA_LOCAL>\Mercado Publico\new
+  carpeta nueva : C:\Users\<usuario>\<carpeta-de-trabajo>\Escritorio\POWER BI\Insumos\Mercado Publico\new
   tipo          : lic   encoding: latin-1   sep: ';'
   archivos a leer: 44
       lic_2023-1.csv                                                192,813 filas
@@ -42,7 +43,7 @@ PASO 0-B · LICITACIONES POR MES DE PUBLICACION — VIEJO vs NUEVO
       lic_2025-9.csv                                                124,680 filas
       lic_2026-1.csv                                                118,536 filas
       lic_2026-2.csv                                                125,814 filas
-<CARPETA_LOCAL>\Codigos\paso0b_meses_viejo_vs_nuevo.py:225: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+C:\Users\<usuario>\<carpeta-de-trabajo>\Escritorio\POWER BI\Insumos\Codigos\paso0b_meses_viejo_vs_nuevo.py:225: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
   fp2 = pd.to_datetime(trozo.loc[malas, c_fp].astype(str).str.slice(0, 10),
       lic_2026-3.csv                                                160,248 filas
       lic_2026-4.csv                                                154,423 filas

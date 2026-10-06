@@ -1,62 +1,141 @@
-# Capstone · Mercado Público de Chile, 2017-2026
+# Qué compra y cuánto paga el Estado
 
-Análisis del dato abierto de compras públicas chilenas: **51,4 millones de líneas
-de orden de compra** y **26,3 millones de registros de licitación**, diez años,
-procesados en Databricks/Spark.
+**Auditoría nacional de la capa de producto en las compras públicas de Chile, 2017-2026.**
+51,4 millones de líneas de orden de compra y 26,3 millones de registros de licitación del dato
+abierto de Mercado Público, procesados con Apache Spark en Databricks.
 
-## Qué se pregunta
+Proyecto Capstone de la especialización en Big Data de **Samsung Innovation Campus Chile 2026**.
+Trabajo individual, defendido el 9 de septiembre de 2026.
+📄 **[Informe final (PDF)](docs/Informe-final-Que-compra-y-cuanto-paga-el-Estado.pdf)**
 
-1. **¿El código de producto (ONU/UNSPSC) que declara una orden de compra es
-   consistente con el que declaró la licitación que la originó?**
-   Respuesta: sí 94,44 %  pero contra un **baseline nulo permutado de 1,38 %**,
-   y sólo el **19,73 %** del universo permite hacerse la pregunta. El hallazgo es
-   la exclusión, no la tasa.
-2. **¿La entrada en vigencia del art. 20 bis de la Ley 19.886 (12-dic-2024) mejoró
-   la codificación?** Respuesta: no. +0,28 pp, +0,30 pp restringido a los mismos
-   organismos. Y un **placebo** la cobertura de un campo que la norma no manda
-   se mueve igual, así que el movimiento de la serie no es cumplimiento normativo.
-3. **¿La especificación de texto de una línea es evidencia independiente del
-   código, o es una copia de él?** Es circular en una proporción que crece de
-   7,43 pp (2019) a 22,60 pp (2026), y el mecanismo es identificable: Convenio
-   Marco pasa de 6,65 % a 99,86 %.
+![Embudo de trazabilidad](figuras/fig2_embudo_trazabilidad.png)
 
-La doctrina del proyecto es **"alerta, no infracción"**: que una línea no sea
-auditable con lo publicado no prueba que se haya comprado otra cosa.
+---
 
-## Cómo se trabaja
+## La pregunta
 
-Tres reglas explican casi todas las decisiones del repositorio:
+Desde el 12 de diciembre de 2024, la ley obliga a clasificar y codificar cada bien y servicio que
+compra el Estado (art. 20 bis, Ley 19.886). Cada línea de una compra lleva un código de producto
+de 8 dígitos (ONU/UNSPSC), tomado de un catálogo de 18.881. **¿Esa capa de producto sirve para
+auditar qué compró el Estado?**
 
-- **Toda cifra se cita con su `RUN_ID` y se copia de la salida cruda, nunca se
-  recalcula** (regla §1.20). Las salidas crudas están en `resultados/`.
-- **Régimen de evidencia obligatorio.** Cada afirmación lleva etiqueta:
-  `[MEDIDO]` · `[MEDIDO · recálculo declarado]` · `[FUENTE]` (con URL) ·
-  `[VERIFICADO]` · `[POR VERIFICAR]` · `[PRUEBA]` · `[PROPUESTA]`.
-- **Una corrida de Databricks por día** (§1.18: la cuenta es gratuita y tiene tope
-  diario). Por eso los gráficos, los tamices y las auditorías corren en el PC.
+## La respuesta
+
+**No, y el motivo no es el que se esperaría.** Los organismos no codifican mal: cuando se puede
+comparar el código de la orden de compra con el de su licitación, coinciden en el 94,44 % de los
+casos. El problema es anterior. En la mayoría de los procesos la comparación no se puede hacer:
+
+- La licitación nunca declaró una capa de producto contra la cual comparar.
+- El texto que debería describir cada línea es, cada vez más, una copia del nombre del código.
+
+| Resultado | Cifra |
+|---|---|
+| Consistencia del código entre licitación y orden de compra | **94,44 %** contra 1,38 % del azar |
+| Licitaciones que declaran a lo más un código, compren lo que compren | **80,08 %** |
+| Efecto de la ley: último año sin obligación contra el primero con ella | **+0,28 pp** |
+| La caída que la ley no tocó, entre 2019 y 2022 | **−10,22 pp** |
+| Convenio Marco: líneas cuyo texto es una copia del nombre del código | **6,65 % → 99,86 %** |
+| Gasto de la década · concentración en 300 códigos | **89,4 billones de pesos · 72,49 %** |
+| Casos revisados a mano: código válido que designa otro producto | **18 de 30** |
+| Validación externa: órdenes de compra capturadas de las que ChileCompra declara para 2024 | **98,25 %** |
+
+Todas son `[MEDIDO]`: salen de correr el código sobre los datos reales y llevan el `run_id` de la
+corrida que las produjo (anexo A del informe).
+
+> **"Alerta, no infracción."** Que una línea no se pueda auditar con lo publicado **no prueba** que
+> se haya comprado otra cosa. Este trabajo mide trazabilidad, no fraude.
+
+![Curva de maduración](figuras/fig7_maduracion_v2.png)
+
+---
+
+## Cómo se trabajó
+
+Lo técnico fue lo más fácil. Lo difícil fue no afirmar más de lo que los datos sostienen. Para
+eso, el proyecto se dio cinco reglas:
+
+1. **Ninguna tasa sin su azar.** Cada indicador se compara contra un baseline nulo: los mismos
+   datos barajados al azar y medidos exactamente igual. Un 94,44 % no significa nada sin el 1,38 %
+   al lado.
+2. **Placebos predeclarados.** Si la ley explicara el cambio, un campo que la ley no regula no
+   debería moverse. Se mide igual y se reporta, falle o no.
+3. **Criterio antes que resultado.** Los umbrales y las reglas de lectura se escriben antes de
+   correr, y no se negocian después. Un resultado propio, CAP-12B, se descartó por no cumplir su
+   criterio, aunque el número ya estaba a la vista. El archivo sigue en `resultados/` con el sufijo
+   `_DESCARTADO`.
+4. **Toda cifra es trazable.** Se copia de una salida cruda, que nunca se edita, y lleva su
+   `run_id`. Cada afirmación del informe va etiquetada: `[MEDIDO]`, `[FUENTE]` (documento oficial
+   con fecha), `[POR VERIFICAR]` o `[DESCARTADO]`.
+5. **Auditar el propio corte.** El proyecto encontró una triplicación de filas en sus propios datos.
+   La midió con tres métodos independientes y demostró, trazando el código, que no afecta ninguna
+   cifra publicada ([`docs/F26`](docs/F26-AUDITORIA-Y-CIERRE-DE-FLANCOS-28-AGO.md)).
+
+## Stack
+
+- **Procesamiento:** Apache Spark (PySpark, Spark SQL) en Databricks, sobre Parquet particionado
+  por año.
+- **Texto y clasificación:** `pyspark.ml` (TF-IDF, Word2Vec, regresión logística),
+  sentence-transformers y scikit-learn.
+- **Estadística:** baselines por permutación, Mantel-Haenszel, bootstrap por conglomerados,
+  muestreo estratificado con reponderación.
+- **Análisis local y figuras:** pandas, matplotlib. Después de la defensa, DuckDB.
+- **Visualización:** Power BI.
 
 ## Mapa del repositorio
 
 | Carpeta | Qué hay |
 |---|---|
-| `docs/` | Cierre de cifras y auditoría: `01-RESULTADOS-CORRIDA-1314c4f6d481.md`, `02-CIERRE-DE-LAS-CIFRAS-EN-PESOS.md`, `F26-AUDITORIA-Y-CIERRE-DE-FLANCOS-28-AGO.md`. **Empezar por `F26`**  audita el propio pipeline y referencia de dónde sale cada cifra citada. |
-| `notebooks/` | Celdas de Databricks: notebook maestro **`etapa2_ANEXO_PROFESOR_v19.py`** (el que se entrega), `etapa2_RESPALDO_COMPLETO_v18.py` (respaldo con los apéndices de diagnóstico), bloques `CAP-*`, pasos de auditoría de corte |
-| `local/` | Todo lo que corre en el PC sin gastar cupo: figuras, tamices, auditorías, comparadores de corte |
-| `resultados/` | Salidas crudas de cada corrida, con `LEEME.txt` que dice qué es citable |
-| `csv/` | Insumos de las figuras, con su procedencia declarada |
-| `figuras/` | PNG y PDF generados por `local/graficos_capstone.py` |
-| `datos/` | Catálogo ONU, muestras, pesos de estratos |
+| [`docs/`](docs/) | El informe final en PDF, las cifras madre ([`01-RESULTADOS`](docs/01-RESULTADOS-CORRIDA-1314c4f6d481.md), [`02-CIERRE`](docs/02-CIERRE-DE-LAS-CIFRAS-EN-PESOS.md)), la auditoría del corte ([`F26`](docs/F26-AUDITORIA-Y-CIERRE-DE-FLANCOS-28-AGO.md)), la verificación de fuentes normativas ([`F13`](docs/F13-verificacion-fuentes-21ago2026.md)) y las fichas de CAP-14 y CAP-18 |
+| [`notebooks/`](notebooks/) | Celdas de Databricks. **El pipeline entregado es [`etapa2_ANEXO_PROFESOR_v19.py`](notebooks/etapa2_ANEXO_PROFESOR_v19.py)**; los `CAP13` a `CAP18` son los análisis complementarios |
+| [`local/`](local/) | Lo que corre en un PC: esquema común, tamices, auditorías, figuras y tests |
+| [`resultados/`](resultados/) | Salidas crudas de cada corrida, sin editar. [`LEEME.txt`](resultados/LEEME.txt) dice cuáles se citan |
+| [`datos/`](datos/) | Catálogo ONU (18.881 códigos), muestra de validación manual y pesos de estratos |
+| [`csv/`](csv/) · [`figuras/`](figuras/) | Insumos de las figuras · figuras en PNG y PDF |
 
-**Punto de entrada operativo:** `docs/F26-AUDITORIA-Y-CIERRE-DE-FLANCOS-28-AGO.md`, y desde ahí a `01-RESULTADOS` / `02-CIERRE` según la cifra que se necesite trazar.
+## Cómo reproducirlo
 
-> Esta es una versión curada del paquete de trabajo completo (ver `SOBRE-ESTA-COPIA.md`): mantiene todo el código, los datos y las salidas crudas necesarias para reproducir y verificar cada cifra citada, y deja fuera la bitácora sesión-a-sesión del desarrollo.
+1. **Datos de origen.** Las órdenes de compra y licitaciones mensuales del portal de
+   [datos abiertos de ChileCompra](https://datosabiertos.chilecompra.cl), 2017-2026. No se
+   redistribuyen: son decenas de GB y cambian entre descargas (el proyecto lo midió:
+   [`docs/F26`](docs/F26-AUDITORIA-Y-CIERRE-DE-FLANCOS-28-AGO.md)).
+2. **Esquema común y Parquet.** [`local/esquema_comun.py`](local/esquema_comun.py) y
+   [`local/preparar_corte_v2.py`](local/preparar_corte_v2.py) normalizan los nombres de columna,
+   que ChileCompra cambió entre años, y particionan por año.
+3. **Pipeline.** Importar [`notebooks/etapa2_ANEXO_PROFESOR_v19.py`](notebooks/etapa2_ANEXO_PROFESOR_v19.py)
+   en Databricks y correrlo sobre los Parquet. Cada corrida imprime su `run_id`.
+4. **Comparar.** Las cifras de cada corrida se contrastan con las salidas crudas de
+   [`resultados/`](resultados/).
 
-## Lo que este proyecto hace y casi ningún trabajo de datos hace
+Las pruebas de la lógica corren en un PC, sin Spark ni datos de origen. Cada una es un script que
+termina con código 0 si pasa:
 
-- Mide el azar antes de celebrar una tasa (baseline nulo permutado).
-- Predeclara placebos y reporta cuando fallan.
-- Descartó su propio resultado alternativo (CAP-12B) por no replicar un criterio
-  predeclarado, teniendo ya el número en la mano.
-- **Encontró un defecto de triplicación de filas en su propio corte de datos, lo
-  midió con tres métodos independientes y demostró trazando el código, no
-  argumentando que no afecta ninguna cifra publicada** (`docs/F26`).
+```bash
+pip install -r requirements.txt
+python local/test_cap14_mh.py        # Mantel-Haenszel y varianza RBG de CAP-14 (9 escenarios)
+python local/test_cap18_etiquetas.py # embudo de etiquetas del clasificador CAP-18
+python local/test_cap18_metricas.py  # métricas del clasificador
+```
+
+`local/test_cap15_verificacion.py` necesita PySpark y se corre en Databricks.
+
+## Qué no incluye
+
+- **Los datos crudos**, por tamaño y porque cambian entre descargas.
+- **La bitácora de desarrollo** (sesiones, traspasos y versiones superadas de los notebooks), que
+  queda en el repositorio de trabajo.
+- **Los criterios predeclarados y las salidas crudas de la etapa posterior a la defensa.** Se
+  publicarán con el historial de commits que prueba que cada criterio se escribió antes que su
+  resultado.
+
+## Autor
+
+**Jeancarlo Cuesta** · Contador Público y Auditor, Ingeniero en Control de Gestión ·
+[LinkedIn](https://www.linkedin.com/in/jeancarlo-cuesta-4a1597254)
+
+El código y los documentos se desarrollaron con apoyo de IA generativa. Las decisiones de diseño,
+los criterios y la lectura de los resultados son del autor.
+
+## Licencia y cita
+
+Código: MIT ([`LICENSE`](LICENSE)) · Datos derivados, figuras y documentos: CC BY 4.0
+([`LICENSE-DATOS.md`](LICENSE-DATOS.md)) · Para citarlo: [`CITATION.cff`](CITATION.cff).

@@ -15,6 +15,19 @@ CITABLE  (RUN_ID_G7b = 966ab5c4d538 · corrida del 24-ago)
                                      -> prueba de reproducibilidad
                                      OJO: el bloque CAP-12B de ese mismo archivo NO se cita.
 
+CITABLE  (RUN_ID_N3 = 5a53ec4a1f30 · corrida del 7-sep-2026 · CAP-18 / N3)
+  cap18_n3_salida_cruda.txt          clasificador supervisado, SEGMENTO (2 dig)
+                                     LogReg 63,93% · baseline 15,62% · macro-F1 0,4687
+  cap18b_familia4_salida_cruda.txt   el mismo, FAMILIA (4 dig)
+                                     LogReg 56,58% · baseline 7,61% · macro-F1 0,2739
+      OJO 1: los dos archivos son TRANSCRIPCIONES de la salida pegada en el chat,
+             no exportaciones byte a byte. Los valores son literales. Su propia
+             cabecera lo declara.
+      OJO 2: CAP-18-B no acuña run_id propio; se cita por el de la tabla que lee.
+      OJO 3: toda cifra de estos dos archivos se cita CON SU BASELINE al lado y
+             CON macro-F1, nunca accuracy solo. Reglas completas en
+             claude/F35-cap18-n3-resultado.md.
+
 NO CITAR
   cap12b_desacuerdos_top200_DESCARTADO.csv
       Salida de CAP-12B, que NO replico su criterio predeclarado
