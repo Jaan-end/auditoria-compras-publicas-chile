@@ -130,7 +130,7 @@ python local/test_cap18_metricas.py  # métricas del clasificador
 ## Autor
 
 **Jeancarlo Cuesta** · Contador Público y Auditor, Ingeniero en Control de Gestión ·
-[LinkedIn](https://www.linkedin.com/in/jeancarlo-cuesta-4a1597254)
+[LinkedIn](https://www.linkedin.com/in/jeancarlocuesta)
 
 El código y los documentos se desarrollaron con apoyo de IA generativa. Las decisiones de diseño,
 los criterios y la lectura de los resultados son del autor.
