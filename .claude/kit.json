@@ -1,0 +1,12 @@
+{
+  "nivel": "N2",
+  "modo": "solo",
+  "test": ".venv\\Scripts\\python.exe local\\test_cap14_mh.py && .venv\\Scripts\\python.exe local\\test_cap18_etiquetas.py && .venv\\Scripts\\python.exe local\\test_cap18_metricas.py",
+  "test_timeout": 300,
+  "format": "",
+  "lint": ".venv\\Scripts\\python.exe -m ruff check --select F,E9 {file}",
+  "format_ext": [
+    ".py"
+  ],
+  "carpetas_privadas": []
+}

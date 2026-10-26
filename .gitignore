@@ -40,3 +40,7 @@ desktop.ini
 !datos/cap11_pesos_estratos.csv
 !csv/*.csv
 !resultados/*.csv
+# esquema-niveles: archivos personales
+.claude/settings.local.json
+CLAUDE.local.md
+.claude/agent-memory-local/
